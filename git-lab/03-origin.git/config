@@ -1,0 +1,6 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+[remote "origin"]
+	url = /home/goliasa1/Documents/Capstone/ia-01-git-lab-student/git-lab-student/git-lab/seed.git
