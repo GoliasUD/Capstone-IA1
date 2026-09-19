@@ -53,6 +53,7 @@ c83414e Git build commit message
 d66359b Initial commit
 ```
 
+* git graph is my personal alias for `git log --graph --oneline --decorate --all`
 * This command displays the repository's commit graph and all references. The output shows the initial commit to my repository with the pointer HEAD to main, as well as the state of the remote main branch (origin). With a more complex repository state, this command describes the branching structure and where features have been developed or merged.
 
 
@@ -235,6 +236,7 @@ ba630c8 Add configuration loader
 ```
 
 * The `git graph` command proves Alice's feature is on a local branch main, while the remote repo is still behind on the latest Update README branch
+* Only 03-remotes-alice/ is affected by this commit, 03-origin.git/ is unaffected until the commit is pushed and 03-remotes-bob/ is unaffected until pulled from the remote
 
 ```
 $ git push origin main
@@ -256,6 +258,7 @@ ba630c8 Add configuration loader
 ```
 
 * The push command transfers the new commit object to the remote repo, updating it's main branch pointer and changing Alice's local remote to reflect origin/main
+* Now the 03-origin.git/ is updated by the push command and Bob's remote and pull changes
 
 ```
 $ cd ../03-remotes-bob/
@@ -641,7 +644,7 @@ nothing to commit, working tree clean
 1. What is the difference between a commit and a branch?
 
 * A commit is an unchageable snapshot of the repository at a specific instance in time, it stores an ID to be referenced at different points, a reference to its parent, and is an object storing changes made in that working session
-* A branch is a moveable divergence from the repository. Branches are used for adding features or testing and identify a specific commit object.
+* A branch is a moveable divergence from the repository. Branches are used for adding features or testing, and identify a specific commit object.
 
 2. What role does the index play in constructing the next commit?
 
@@ -667,7 +670,7 @@ nothing to commit, working tree clean
 
 7. What makes an automated test useful to git bisect?
 
-* An automated test script signals success or failure of commits during the search. Git bisect runs a binary search across the commit graph to pick out a bad commit and this script aids in that process. The search model evaluates a large commit range in just a few steps.
+* An automated test script signals success or failure of commits during the search. Git bisect runs a binary search across the commit graph to pick out a bad commit and this script aids in that process. The search model evaluates a large commit range in just a few steps and reduces the big-O notation of a traditional linear search.
 
 8. What common mental model connects merge, rebase, reset, reflog, and bisect?
 
